@@ -4,77 +4,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health & Hygiene Project</title>
+    <title>Health & Hygiene | Small Habits, Big Impact</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
+    <div class="progress-bar"></div>
 
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Health and hygiene<span>.</span></div>
-            </nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                Health & Hygiene<span>.</span>
+            </a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="index2.html" class="nav-link">Explore Habits</a></li>
+                <li><a href="index1.html" class="nav-link">Health & Hygiene</a></li>
+                <li><a href="index2-1.html" class="nav-link">Importance</a></li>
+                <li><a href="index3.html" class="nav-link">Awareness</a></li>
+                <li><a href="index4.html" class="nav-link">Swachh Bharat</a></li>
+                <li><a href="index5.html" class="nav-link">Tree Plantation</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="hero-background"></div>
+            <div class="hero-bg-glow"></div>
             <div class="hero-content">
-                <h1 class="anim-load" style="--delay: 0.2s;">Small Habits.</h1>
-                <h1 class="anim-load" style="--delay: 0.4s;">Big Impact.</h1>
-                <p class="anim-load" style="--delay: 0.6s;">
-                    Welcome to our Health & Hygiene project. Discover how simple, daily actions can lead to a healthier and more vibrant life for you and your community.
+                <div class="hero-badge anim-load" style="--delay: 0.1s;">
+                    <i class="fa-solid fa-shield-halved"></i> Daily Hygiene & Community Wellness
+                </div>
+                <h1 class="anim-load" style="--delay: 0.3s;">
+                    Small Habits. <br><span class="gradient-text">Big Impact.</span>
+                </h1>
+                <p class="anim-load" style="--delay: 0.5s;">
+                    Welcome to our Health & Hygiene initiative. Discover how simple daily practices lead to a healthier, happier life and a vibrant community.
                 </p>
-                <a href="index2.html" class="cta-button anim-load" style="--delay: 0.8s;">Learn More</a>
+                <div class="hero-actions anim-load" style="--delay: 0.7s;">
+                    <a href="index2.html" class="cta-button">
+                        Explore Healthy Habits <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="index1.html" class="cta-button secondary-btn">
+                        Learn More <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                </div>
             </div>
         </section>
 
+        <!-- Features Grid Section -->
         <section id="features" class="features-section">
-            <div class="container features-grid">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Core Pillars</span>
+                    <h2 class="section-title">Key Areas of Focus</h2>
+                    <p style="color: var(--text-muted);">Transforming daily routines into lifelong health advantages.</p>
+                </div>
 
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h2>🧼-🖐</h2>
+                <div class="features-grid">
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-hands-bubbles"></i>
+                        </div>
                         <h3>Hand Hygiene</h3>
-                        <p>The simplest, most effective way to stop the spread of germs and prevent illness.</p>
+                        <p>The single most effective way to eliminate germs, prevent illness, and safeguard loved ones every day.</p>
                     </div>
-                </div>
 
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h2>❤️-❤️‍🩹</h2>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-heart-circle-check"></i>
+                        </div>
                         <h3>Personal Wellness</h3>
-                        <p>Good hygiene is self-care. It boosts mental health, confidence, and overall well-being.</p>
+                        <p>Self-care and body hygiene boost mental clarity, confidence, immunity, and overall energy levels.</p>
                     </div>
-                </div>
 
-                <div class="feature-card">
-                    <div class="card-content">
-                        <h2>♻️- 🌍</h2>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-plant-wilt"></i>
+                        </div>
                         <h3>Clean Environment</h3>
-                        <p>A clean space reduces stress, prevents pests, and creates a safe sanctuary for you.</p>
+                        <p>Maintaining clean surroundings reduces stress, eliminates vectors of disease, and protects ecosystem health.</p>
                     </div>
-                </div>
 
+                </div>
             </div>
         </section>
     </main>
-    <footer>
-        <h2>Contact Us</h2>
-        <div class="contact-info">
-            📞 <a href="tel:+916300705852">+916300705852</a>
-        </div>
-        <div class="contact-info">
-            📧 <a href="mailto:boonamukkaladeekshith@gmail.com">boonamukkaladeekshith@gmail.com</a>
-        </div>
-        <div class="footer-bottom">
-            © 2025 Health and Hygiene.
+
+    <!-- Master Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand-logo">
+                        <div class="logo-icon"><i class="fa-solid fa-leaf"></i></div>
+                        Health & Hygiene
+                    </a>
+                    <p>Empowering individuals and communities through daily health practices, environmental sanitation, and wellness education.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                        <li><a href="index2.html"><i class="fa-solid fa-chevron-right"></i> Explore Habits</a></li>
+                        <li><a href="index1.html"><i class="fa-solid fa-chevron-right"></i> Health & Hygiene</a></li>
+                        <li><a href="index2-1.html"><i class="fa-solid fa-chevron-right"></i> Importance</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Core Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="index3.html"><i class="fa-solid fa-chevron-right"></i> Spreading Awareness</a></li>
+                        <li><a href="index4.html"><i class="fa-solid fa-chevron-right"></i> Swachh Bharat</a></li>
+                        <li><a href="index5.html"><i class="fa-solid fa-chevron-right"></i> Tree Plantation</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <div class="contact-badge-list">
+                        <a href="mailto:badhri2904.alahari@gmail.com" class="contact-badge">
+                            <div class="icon-box"><i class="fa-regular fa-envelope"></i></div>
+                            <div class="info-text">
+                                <span class="info-label">Email Us</span>
+                                <span class="info-value">badhri2904.alahari@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+918790079929" class="contact-badge">
+                            <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                            <div class="info-text">
+                                <span class="info-label">Call / Mobile</span>
+                                <span class="info-value">+91 8790079929</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Health & Hygiene. All Rights Reserved.</p>
+                <p>Designed for Wellness & Community Impact</p>
+            </div>
         </div>
     </footer>
 

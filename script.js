@@ -1,36 +1,73 @@
 document.addEventListener("DOMContentLoaded", function() {
 
-    // --- 1. Custom Cursor Logic ---
+    // --- 1. Custom Inertia Cursor ---
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
-    const hoverables = document.querySelectorAll('a, .cta-button, .feature-card');
 
-    // Update cursor position
-    window.addEventListener('mousemove', function(e) {
-        const posX = e.clientX;
-        const posY = e.clientY;
+    if (cursorDot && cursorOutline) {
+        let mouseX = 0, mouseY = 0;
+        let outlineX = 0, outlineY = 0;
 
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
+        window.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
 
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" }); // Creates a smooth "follow"
-    });
-
-    // Animate cursor on hover
-    hoverables.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            cursorOutline.classList.add('cursor-grow');
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
         });
-        item.addEventListener('mouseleave', () => {
-            cursorOutline.classList.remove('cursor-grow');
+
+        function animateCursor() {
+            // Smooth inertia interpolation
+            outlineX += (mouseX - outlineX) * 0.18;
+            outlineY += (mouseY - outlineY) * 0.18;
+
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor Grow on hoverable elements
+        const hoverables = document.querySelectorAll('a, button, .feature-card, .scroll-item, .detail-card, .contact-badge');
+        hoverables.forEach(item => {
+            item.addEventListener('mouseenter', () => cursorOutline.classList.add('cursor-grow'));
+            item.addEventListener('mouseleave', () => cursorOutline.classList.remove('cursor-grow'));
         });
-    });
+    }
 
+    // --- 2. Scroll Progress Bar ---
+    const progressBar = document.querySelector('.progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+        });
+    }
 
-    // --- 2. Button Ripple Effect Logic ---
+    // --- 3. Mobile Navigation Toggle ---
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = navToggle.querySelector('i');
+            if (icon) {
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+    }
+
+    // --- 4. Button Ripple Effect ---
     const buttons = document.querySelectorAll('.cta-button');
     buttons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -50,35 +87,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-
-    // --- 3. 3D Card Tilt Effect Logic ---
-    const cards = document.querySelectorAll('.feature-card');
-
+    // --- 5. 3D Card Tilt Effect ---
+    const cards = document.querySelectorAll('.feature-card, .scroll-item');
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const cardRect = card.getBoundingClientRect();
-            // Calculate mouse position relative to the card center
             const x = e.clientX - cardRect.left - cardRect.width / 2;
             const y = e.clientY - cardRect.top - cardRect.height / 2;
 
-            // Define max rotation (e.g., 15 degrees)
-            const maxTilt = 15;
-
-            // Calculate rotation
-            // (y / height) gives a value from -0.5 to 0.5. Multiply by maxTilt.
-            const rotX = (y / (cardRect.height / 2)) * -maxTilt; // Invert X for natural tilt
+            const maxTilt = 8;
+            const rotX = (y / (cardRect.height / 2)) * -maxTilt;
             const rotY = (x / (cardRect.width / 2)) * maxTilt;
 
-            // Apply the 3D transform
-            card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.05)`;
-            card.style.boxShadow = "0 20px 50px rgba(13, 44, 84, 0.3)";
+            card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-6px)`;
         });
 
-        // Reset card when mouse leaves
         card.addEventListener('mouseleave', () => {
-            card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-            card.style.boxShadow = "0 10px 30px rgba(13, 44, 84, 0.1)";
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
         });
     });
-
 });
